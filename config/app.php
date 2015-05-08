@@ -150,6 +150,9 @@ return [
 		*/
 		'Laracasts\Generators\GeneratorsServiceProvider',
 		'Frozennode\Administrator\AdministratorServiceProvider',
+		'Jenssegers\Mongodb\MongodbServiceProvider',
+		'Intervention\Image\ImageServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
 
 
 	],
@@ -199,6 +202,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Image' 	=> 'Intervention\Image\Facades\Image',
+		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
 
 	],
 

@@ -6,7 +6,10 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.0.*",
-		"frozennode/administrator": "5.*"
+		"frozennode/administrator": "5.*",
+		"jenssegers/mongodb": "~2.1",
+		"intervention/image": "~2.2",
+		"zizaco/entrust": "dev-laravel-5"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
