@@ -145,6 +145,13 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		/*
+		* Custom Services Providers...
+		*/
+		'Laracasts\Generators\GeneratorsServiceProvider',
+		'Frozennode\Administrator\AdministratorServiceProvider',
+
+
 	],
 
 	/*
