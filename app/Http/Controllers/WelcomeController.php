@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\Role;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,6 +32,11 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		// $user = new Role();
+		// $user->name         = 'user';
+		// $user->display_name = 'User'; // optional
+		// $user->description  = 'User of the Jungler!'; // optional
+		// $user->save();
 		return view('welcome');
 	}
 
