@@ -10,7 +10,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 
 // class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
-class User extends Eloquent implements AuthenticatableContract, CanResetPasswordContract {
+class User extends \Eloquent implements AuthenticatableContract, CanResetPasswordContract {
 
 	use EntrustUserTrait;
 	use Authenticatable, CanResetPassword;
