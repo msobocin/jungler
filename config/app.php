@@ -13,7 +13,8 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG'),
+	'debug' => true,
+	//'debug' => env('APP_DEBUG'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -153,6 +154,7 @@ return [
 		'Jenssegers\Mongodb\MongodbServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 
 
 	],
@@ -204,6 +206,8 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Image' 	=> 'Intervention\Image\Facades\Image',
 		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
+		'Form'=> 'Illuminate\Html\FormFacade', 
+		'HTML'=> 'Illuminate\Html\HtmlFacade',
 
 	],
 

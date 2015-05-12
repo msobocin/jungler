@@ -11,6 +11,8 @@
 |
 */
 
+Route::model('posts', 'Post');
+
 //Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -25,3 +27,4 @@ Route::bind('/', function($value, $route) {
 });
 
 Route::resource('/', 'PostsController');
+Route::resource('posts', 'PostsController');

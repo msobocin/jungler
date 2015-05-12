@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Post;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class PostsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$posts = Post::all();
+		return view('posts.index', compact('posts'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class PostsController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('posts.create');
 	}
 
 	/**
@@ -43,9 +45,9 @@ class PostsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Post $post)
 	{
-		//
+		return view('posts.show', compact('post'));
 	}
 
 	/**
@@ -54,9 +56,9 @@ class PostsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Post $post)
 	{
-		//
+		return view('posts.edit', compact('post'));
 	}
 
 	/**
@@ -65,7 +67,7 @@ class PostsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Post $post)
 	{
 		//
 	}
@@ -76,7 +78,7 @@ class PostsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Post $post)
 	{
 		//
 	}
