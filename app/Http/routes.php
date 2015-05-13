@@ -23,6 +23,8 @@ Route::controllers([
 // Provide controller methods with object instead of ID
 Route::model('posts', 'Post');
 
+
+
 Route::bind('posts', function($value, $route) {
 	return App\Post::whereSlug($value)->first();
 });

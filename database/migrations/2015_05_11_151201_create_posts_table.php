@@ -16,6 +16,8 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->text('content');
             $table->string('slug')->unique();
+            $table->integer('user_id')->unsigned()->default(0);
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

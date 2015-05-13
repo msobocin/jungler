@@ -36,4 +36,9 @@ class User extends \Eloquent implements AuthenticatableContract, CanResetPasswor
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
 }

@@ -8,7 +8,7 @@
     @else
         <ul>
             @foreach( $posts as $post )
-                <li><a href="{{ route('posts.show', $post->slug) }}">{{ $post->content }} </a> {{ $post -> created_at }}</li>
+                <li><a href="{{ route('posts.show', $post->slug) }}">{{ $post->content }} </a> {{ $post -> created_at }} user: {{ $post->user->name }}</li>
             @endforeach
         </ul>
     @endif
