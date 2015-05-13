@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Input;
+use Redirect;
+
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +34,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		//return view('home');
+        return Redirect::route('posts.index')->with('message', 'Logged Succesfull.');
 	}
 
 }
