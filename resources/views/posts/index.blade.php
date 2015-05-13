@@ -2,7 +2,14 @@
  
 @section('content')
     <h2>Posts</h2>
- 
+
+    @if (!Auth::guest())
+        {!! Form::model(new App\Post, ['route' => ['posts.store'], 'class'=>'']) !!}
+            @include('posts/partials/_form', ['submit_text' => 'Create Post'])
+        {!! Form::close() !!}
+    @endif
+
+
     @if ( !$posts->count() )
         You have no post
     @else

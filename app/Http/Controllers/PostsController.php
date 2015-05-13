@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers;
 
 
+use Illuminate\Support\Facades\Auth;
 use Input;
 use Redirect;
 
+use App\User;
 use App\Post;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -28,9 +30,9 @@ class PostsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create(User $user)
 	{
-		return view('posts.create');
+        return view('posts.create', compact('user'));
 	}
 
 	/**
@@ -40,7 +42,11 @@ class PostsController extends Controller {
 	 */
 	public function store()
 	{
-		//
+        $input = Input::all();
+        $input['user_id'] = Auth::user()->id;
+        Post::create( $input );
+
+        return Redirect::route('posts.index')->with('message', 'Posts created');
 	}
 
 	/**
