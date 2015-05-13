@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+
+use Input;
+use Redirect;
+
 use App\Post;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

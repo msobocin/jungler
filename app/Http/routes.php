@@ -11,8 +11,6 @@
 |
 */
 
-Route::model('posts', 'Post');
-
 //Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -22,9 +20,12 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::bind('/', function($value, $route) {
+// Provide controller methods with object instead of ID
+Route::model('posts', 'Post');
+
+Route::bind('posts', function($value, $route) {
 	return App\Post::whereSlug($value)->first();
 });
 
-Route::resource('/', 'PostsController');
 Route::resource('posts', 'PostsController');
+Route::resource('/', 'PostsController');
