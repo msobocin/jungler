@@ -4,6 +4,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model {
 
+	use \Conner\Tagging\TaggableTrait;
+
     protected $guarded = [];
 
 	public function user()

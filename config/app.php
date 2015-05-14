@@ -155,6 +155,8 @@ return [
 		'Intervention\Image\ImageServiceProvider',
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
+		'Conner\Tagging\TaggingServiceProvider', //tags
+
 
 
 	],
