@@ -157,6 +157,7 @@ return [
 		'Illuminate\Html\HtmlServiceProvider',
 		'Conner\Tagging\TaggingServiceProvider', //tags
         'Conner\Likeable\LikeableServiceProvider', //Likes
+        'Lanz\Commentable\CommentableServiceProvider', // comments
 
 
 
