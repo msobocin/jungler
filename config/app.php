@@ -156,6 +156,7 @@ return [
 		'Zizaco\Entrust\EntrustServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 		'Conner\Tagging\TaggingServiceProvider', //tags
+        'Conner\Likeable\LikeableServiceProvider', //Likes
 
 
 
