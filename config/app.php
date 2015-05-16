@@ -158,6 +158,7 @@ return [
 		'Conner\Tagging\TaggingServiceProvider', //tags
         'Conner\Likeable\LikeableServiceProvider', //Likes
         'Lanz\Commentable\CommentableServiceProvider', // comments
+        'Cviebrock\EloquentSluggable\SluggableServiceProvider', //AutoSlug
 
 
 
