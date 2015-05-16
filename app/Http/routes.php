@@ -21,13 +21,16 @@ Route::controllers([
 ]);
 
 // Provide controller methods with object instead of ID
+Route::model('users', 'User');
 Route::model('posts', 'Post');
 
-
-
+Route::bind('users', function($value, $route) {
+    return App\User::whereSlug($value)->first();
+});
 Route::bind('posts', function($value, $route) {
 	return App\Post::whereSlug($value)->first();
 });
 
 Route::resource('posts', 'PostsController');
 Route::resource('/', 'PostsController');
+Route::resource('users', 'UsersController');

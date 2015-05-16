@@ -1,5 +1,8 @@
 <?php namespace App;
 
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -14,6 +17,13 @@ class User extends \Eloquent implements AuthenticatableContract, CanResetPasswor
 
 	use EntrustUserTrait;
 	use Authenticatable, CanResetPassword;
+
+    use SluggableTrait;
+
+    protected $sluggable = array(
+        'build_from' => 'name',
+        'save_to'    => 'slug',
+    );
 
 	/**
 	 * The database table used by the model.
