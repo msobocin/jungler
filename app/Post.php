@@ -3,18 +3,18 @@
 use Lanz\Commentable\Commentable;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
-use Spatie\Activitylog\LogsActivityInterface;
-use Spatie\Activitylog\LogsActivity;
+//use Spatie\Activitylog\LogsActivityInterface;
+//use Spatie\Activitylog\LogsActivity;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model implements SluggableInterface, LogsActivityInterface {
+class Post extends Model implements SluggableInterface {
 
 	use \Conner\Tagging\TaggableTrait;
     use \Conner\Likeable\LikeableTrait;
     use Commentable;
     use SluggableTrait;
-    use LogsActivity;
+    //use LogsActivity;
 
     protected $guarded = [];
 
@@ -28,7 +28,7 @@ class Post extends Model implements SluggableInterface, LogsActivityInterface {
         return $this->belongsTo('App\User');
     }
 
-    public function getActivityDescriptionForEvent($eventName)
+/*    public function getActivityDescriptionForEvent($eventName)
     {
         if ($eventName == 'created')
         {
@@ -46,6 +46,6 @@ class Post extends Model implements SluggableInterface, LogsActivityInterface {
         }
 
         return '';
-    }
+    }*/
 
 }
