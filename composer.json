@@ -14,7 +14,8 @@
 		"rtconner/laravel-tagging": "~1.0.6",
 		"rtconner/laravel-likeable": "~1.0.3",
         "lanz/laravel-commentable": "~2.0",
-        "cviebrock/eloquent-sluggable": "dev-master"
+        "cviebrock/eloquent-sluggable": "dev-master",
+		"spatie/activitylog": "~2.0"
     },
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

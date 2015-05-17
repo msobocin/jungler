@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use Input;
 use Redirect;
 
+use Spatie\Activitylog\Models\Activity;
 use App\User;
 use App\Post;
+
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 

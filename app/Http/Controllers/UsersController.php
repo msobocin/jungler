@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 use App\User;
+use App\Post;
+use Spatie\Activitylog\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Input;
 use Redirect;
@@ -50,7 +52,19 @@ class UsersController extends Controller {
 	 */
 	public function show(User $user)
 	{
-        return view('users.show', compact('user'));
+//        $latestActivities = Activity::with('user')->latest()->limit(100)->get();
+        /*$posts = Post::whereHas('comments', function($q)
+        {
+            $q->where('user_id', '=', 1);
+
+        })->get();*/
+        $user_id = $user->id;
+        $postsComments = Post::whereHas('comments', function($comment) use ($user_id) {
+            $comment->where('user_id', "=" ,$user_id);
+        })->get();
+        $posts = $user->posts;
+        $posts = $posts -> merge($postsComments);
+        return view('users.show', compact('user','posts'));
 	}
 
 	/**

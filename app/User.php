@@ -51,4 +51,9 @@ class User extends \Eloquent implements AuthenticatableContract, CanResetPasswor
         return $this->hasMany('App\Post');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('Lanz\Commentable\Comment');
+    }
+
 }

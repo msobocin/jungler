@@ -159,6 +159,7 @@ return [
         'Conner\Likeable\LikeableServiceProvider', //Likes
         'Lanz\Commentable\CommentableServiceProvider', // comments
         'Cviebrock\EloquentSluggable\SluggableServiceProvider', //AutoSlug
+        'Spatie\Activitylog\ActivitylogServiceProvider', //User Activity
 
 
 
@@ -213,6 +214,7 @@ return [
 		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
 		'Form'=> 'Illuminate\Html\FormFacade', 
 		'HTML'=> 'Illuminate\Html\HtmlFacade',
+        'Activity' => 'Spatie\Activitylog\ActivitylogFacade',
 
 	],
 
