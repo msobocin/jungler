@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Input;
+use Redirect;
+use App\User;
 use App\Post;
 use Lanz\Commentable\Comment;
 use App\Http\Requests;
@@ -16,7 +20,7 @@ class CommentsController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$commnets = Comment::all();
 	}
 
 	/**
@@ -36,13 +40,24 @@ class CommentsController extends Controller {
 	 */
 	public function store(Post $post)
 	{
-        $input = Input::all();
-        $input['user_id'] = Auth::user()->id;
-        $comment = Comment::create( $input );
+        //$postAux = Post::find($post->id);
+        //$input = Input::all();
+        //$input['user_id'] = Auth::user()->id;
+        //$input = Input::all();
+        //$input['user_id'] = Auth::user()->id;
+        //Comment::create( $input );
+        $comment = new Comment;
+        $comment->body = Input::get('body');
+        $comment->user_id = Auth::user()->id;
+        //$comment = Comment::create( $input, Auth::user()->id );
+        //$comment->user_id = Auth::user()->id;
 
-        $post->comments()->save($comment);
 
-        return Redirect::route('posts.index')->with('message', 'Posts created');
+        //echo var_dump($post->slug);
+        //$postAux->comments()->save($comment);
+        Post::find($post->id)->comments()->save($comment);
+
+        return Redirect::route('posts.index')->with('message', 'Comentario creado');
 	}
 
 	/**

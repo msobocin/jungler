@@ -11,6 +11,11 @@
 |
 */
 
+
+Route::model('comments', 'Comment');
+Route::model('users', 'User');
+Route::model('posts', 'Post');
+
 //Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -21,9 +26,6 @@ Route::controllers([
 ]);
 
 // Provide controller methods with object instead of ID
-Route::model('users', 'User');
-Route::model('posts', 'Post');
-Route::model('comments', 'Comment');
 
 Route::bind('users', function($value, $route) {
     return App\User::whereSlug($value)->first();
@@ -33,6 +35,7 @@ Route::bind('posts', function($value, $route) {
 });
 
 Route::resource('posts', 'PostsController');
+Route::resource('posts.comments', 'CommentsController');
 Route::resource('/', 'PostsController');
 Route::resource('users', 'UsersController');
-Route::resource('comments', 'CommetnsController');
+Route::resource('comments', 'CommentsController');

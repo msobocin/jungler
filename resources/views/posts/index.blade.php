@@ -44,25 +44,40 @@
 
                         <div class="collapse" id="{{$post->slug}}">
                             <div class="well">
-                                @if ($post->comments->count()>0)
-                                
-
-                                @foreach( $post->comments as $comment )
-                               
-                                <a class="pull-left" href=''>   <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45"></a>
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        {{ $comment->user->name }}<small >{{ $comment -> created_at }}</small></h4>
-                                    <p class="text-center">  {{ $comment->body }}</p>
-                                </div>
-                                <hr />
-                              
+                                    @if ($post->comments->count()>0)
 
 
-                                <!--<li><a href="{{ route('posts.show', $post->slug) }}">{{ $comment->body }} </a> {{ $comment -> created_at }} user: {{ $comment->user->name }}</li>-->
-                                @endforeach
-                                <!--</ul>-->
+                                    @foreach( $post->comments as $comment )
+
+                                    <a class="pull-left" href=''>   <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45"></a>
+                                    <div class="media-body">
+                                        <h4 class="media-heading">
+                                            {{ $comment->user->name }}<small >{{ $comment -> created_at }}</small></h4>
+                                        <p class="text-center">  {{ $comment->body }}</p>
+                                    </div>
+                                    <hr />
+
+
+
+                                    <!--<li><a href="{{ route('posts.show', $post->slug) }}">{{ $comment->body }} </a> {{ $comment -> created_at }} user: {{ $comment->user->name }}</li>-->
+                                    @endforeach
+                                    <!--</ul>-->
+                                    @if (!Auth::guest())
+
+                                        {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'']) !!}
+                                            @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
+                                        {!! Form::close() !!}
+
+                                    @endif
+
                                 @else <p>No hay comentarios</p>
+                                        @if (!Auth::guest())
+
+                                            {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'']) !!}
+                                            @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
+                                            {!! Form::close() !!}
+
+                                        @endif
                                 @endif
                             </div>
                         </div>
@@ -95,7 +110,7 @@
 
             <!-- Blog Categories Well -->
             <div class="well">
-                <h4>Tags más populares</h4>
+                <h4>Tags mï¿½s populares</h4>
                 <div class="row">
                     <div class="col-xs-6 ">
                         <ul class="list-unstyled">
