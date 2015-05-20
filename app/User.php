@@ -20,6 +20,8 @@ class User extends \Eloquent implements AuthenticatableContract, CanResetPasswor
 
     use SluggableTrait;
 
+    protected $guarded = [];
+
     protected $sluggable = array(
         'build_from' => 'name',
         'save_to'    => 'slug',
