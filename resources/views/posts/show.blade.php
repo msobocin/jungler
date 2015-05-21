@@ -35,7 +35,7 @@
             @endif
 
         </div>
-        <div class="col-lg-4 hidden-xs ">
+        <div class="col-lg-4 col-md-12 col-xs-12 ">
             <!-- Buscador Jungla -->
             <div class="well">
                 <h4>Explorar la jungla!</h4>

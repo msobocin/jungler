@@ -53,7 +53,7 @@
                                 @foreach( $post->comments as $comment )
 
                                 <a class="pull-left" href=''>   <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45"></a>
-                                <div class="media-body">
+                                <div class="media-body ">
                                     <h4 class="media-heading">
                                         {{ $comment->user->name }}<small >{{ $comment -> created_at }}</small></h4>
                                     <p class="text-center"><p>{{ $comment->body }}</p>
@@ -96,7 +96,7 @@
 
         </div>
 
-        <div class="col-md-4 hidden-xs">
+        <div class="col-md-4 col-xs-12 col-sm-12 col-xs-12">
             <!-- Buscador Jungla -->
             <div class="well">
                 <h4>Explorar la jungla!</h4>
