@@ -3,81 +3,84 @@
 @section('content')
 <div class="container">
     <div class="row row-em">    
-        <div class="col-lg-8 ">
+        <div class="col-md-8 col-xs-12 col-sm-12">
 
             <!--        <h2>Posts</h2>-->
+            <div class="row">
+               
 
-            @if (!Auth::guest())
+                    @if (!Auth::guest())
 
-            {!! Form::model(new App\Post, ['route' => ['posts.store'], 'class'=>'']) !!}
+                    {!! Form::model(new App\Post, ['route' => ['posts.store'], 'class'=>'']) !!}
 
-            @include('posts/partials/_form', ['submit_text' => 'Create Post'])
-            {!! Form::close() !!}
+                    @include('posts/partials/_form', ['submit_text' => 'Create Post'])
+                    {!! Form::close() !!}
 
-            @endif
+                    @endif
 
 
-            @if ( !$posts->count() )
-            You have no post
-            @else
+                    @if ( !$posts->count() )
+                    You have no post
+                    @else
+                </div>
 
             <div class="media comentario">
 
                 @foreach( $posts as $post )
                 <a class="pull-left" href=''>
-                    <img class="img-circle" src="../public/img/dede.jpg" width="45">
+                    <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45">
                 </a>
                 <div class="media-body">
                     <h4 class="media-heading">{{ $post->user->name }} <small >{{ $post -> created_at }}</small>
-                         @if(!$post->count())
-                            @else <span class="badge coments">{{$post->comments->count()}}</span>
-                            @endif 
+                        @if(!$post->count())
+                        @else <span class="badge coments hidden-xs">{{$post->comments->count()}}</span>
+                        @endif 
 
 
                     </h4>
-                    {{ $post->content }}
+                    <p>  {{ $post->content }}</p>
                     <div class="responder">
                         <a href="" data-toggle="tooltip" data-placement="bottom" title="Responder"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp; &nbsp; <a href="{{ route('posts.show', $post->slug) }}" data-toggle="tooltip" data-placement="bottom" title="Ver post"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a>
                         &nbsp; &nbsp; <a class="" data-toggle="collapse" href="#{{$post->slug}}" aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Ver comentarios"><div class="glyphicon glyphicon-collapse-down">   </div>
-                          
+
                         </a>
 
                         <div class="collapse" id="{{$post->slug}}">
                             <div class="well">
-                                    @if ($post->comments->count()>0)
+                                @if ($post->comments->count()>0)
 
 
-                                    @foreach( $post->comments as $comment )
+                                @foreach( $post->comments as $comment )
 
-                                    <a class="pull-left" href=''>   <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45"></a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">
-                                            {{ $comment->user->name }}<small >{{ $comment -> created_at }}</small></h4>
-                                        <p class="text-center">  {{ $comment->body }}</p>
-                                    </div>
-                                    <hr />
+                                <a class="pull-left" href=''>   <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45"></a>
+                                <div class="media-body">
+                                    <h4 class="media-heading">
+                                        {{ $comment->user->name }}<small >{{ $comment -> created_at }}</small></h4>
+                                    <p class="text-center"><p>{{ $comment->body }}</p>
+                                </div>
+                                <hr />
 
 
 
-                                    <!--<li><a href="{{ route('posts.show', $post->slug) }}">{{ $comment->body }} </a> {{ $comment -> created_at }} user: {{ $comment->user->name }}</li>-->
-                                    @endforeach
-                                    <!--</ul>-->
-                                    @if (!Auth::guest())
+                                <!--<li><a href="{{ route('posts.show', $post->slug) }}">{{ $comment->body }} </a> {{ $comment -> created_at }} user: {{ $comment->user->name }}</li>-->
+                                @endforeach
+                                <!--</ul>-->
+                                @if (!Auth::guest())
 
-                                        {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'']) !!}
-                                            @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
-                                        {!! Form::close() !!}
+                                {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'']) !!}
+                                @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
+                                {!! Form::close() !!}
 
-                                    @endif
+                                @endif
 
                                 @else <p>No hay comentarios</p>
-                                        @if (!Auth::guest())
+                                @if (!Auth::guest())
 
-                                            {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'']) !!}
-                                            @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
-                                            {!! Form::close() !!}
+                                {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'']) !!}
+                                @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
+                                {!! Form::close() !!}
 
-                                        @endif
+                                @endif
                                 @endif
                             </div>
                         </div>
@@ -93,7 +96,7 @@
 
         </div>
 
-        <div class="col-lg-4 hidden-xs ">
+        <div class="col-md-4 hidden-xs">
             <!-- Buscador Jungla -->
             <div class="well">
                 <h4>Explorar la jungla!</h4>
@@ -110,7 +113,7 @@
 
             <!-- Blog Categories Well -->
             <div class="well">
-                <h4>Tags m�s populares</h4>
+                <h4>Tags m&aacute;s populares</h4>
                 <div class="row">
                     <div class="col-xs-6 ">
                         <ul class="list-unstyled">
@@ -122,11 +125,7 @@
                             </li>
                             <li><a href="#">#LOCO</a>
                             </li>
-                        </ul>
-                    </div>
-                    <div class="col-xs-6 ">
 
-                        <ul class="list-unstyled">
                             <li><a href="#">#Guapisimo</a>
                             </li>
                             <li><a href="#">#hashtag</a>
