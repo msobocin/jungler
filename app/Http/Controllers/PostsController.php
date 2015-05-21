@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Auth;
 use Input;
 use Redirect;
+use Conner\Tagging\Tag;
 
 use Spatie\Activitylog\Models\Activity;
 use App\User;
@@ -45,9 +46,21 @@ class PostsController extends Controller {
 	 */
 	public function store()
 	{
+        //$tagPattern =  '[A-Za-z0-9]';
+
+
         $input = Input::all();
         $input['user_id'] = Auth::user()->id;
-        Post::create( $input );
+
+        //preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($input['content']), $tags);
+        preg_match_all('/\#([a-z0-9_]+)/i', trim($input['content']), $tags);
+
+        $post = Post::create( $input );
+
+        $tags = array_unique($tags[1]);
+        foreach ($tags as $tag){
+            $post -> tag($tag);
+        }
 
         return Redirect::route('posts.index')->with('message', 'Posts created');
 	}

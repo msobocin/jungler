@@ -15,6 +15,7 @@
 Route::model('comments', 'Comment');
 Route::model('users', 'User');
 Route::model('posts', 'Post');
+Route::model('tags', 'Tag');
 
 //Route::get('/', 'WelcomeController@index');
 
@@ -33,9 +34,13 @@ Route::bind('users', function($value, $route) {
 Route::bind('posts', function($value, $route) {
 	return App\Post::whereSlug($value)->first();
 });
+Route::bind('tags', function($value, $route) {
+    return Conner\Tagging\Tag::whereSlug($value)->first();
+});
 
 Route::resource('posts', 'PostsController');
 Route::resource('posts.comments', 'CommentsController');
 Route::resource('/', 'PostsController');
 Route::resource('users', 'UsersController');
 Route::resource('comments', 'CommentsController');
+Route::resource('tags', 'TagsController');
