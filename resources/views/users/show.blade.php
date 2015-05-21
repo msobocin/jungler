@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row row-em">
-    <div class="col-sm-8 col-sm-offset-2  user-details">
+    <div class="col-sm-6 col-sm-offset-4  user-details">
 
         <div class="user-image">
             <img width="100" height="100" src="{{ asset('img/dede.jpg') }}" alt="{{ $user->name}}" title="{{ $user->name}}" class="img-circle">
@@ -36,20 +36,38 @@
             </ul>
             <div class="user-body">
                 <div class="tab-content">
+
+                    <!-- Informacion Usuario-->
+
                     <div id="information" class="tab-pane active">
                         <h4>Account Information</h4>
+                        <div class="table">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>Nombre</td><td>{{ $user->name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td><td>{{ $user->email}}</td>
+                                </tr>
+                            </table>
+                        </div>
+
+
                     </div>
-                   
-                    
+                    <!-- -->
+
                     <!--Formulario Setting-->
                     <div id="settings" class="tab-pane">
                         <h4>Settings</h4>
                         {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->slug]]) !!}
                             <div class="form-group">
+
+
                                 {!! Form::label('password', 'Contraseña:') !!}
                                 {!! Form::text('password') !!}
                             </div>
                             {!! Form::submit("Modificar") !!}
+
 
                         {!! Form::close() !!}
                         <!-- -->
