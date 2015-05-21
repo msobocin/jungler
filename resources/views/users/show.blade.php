@@ -59,22 +59,17 @@
                     <!--Formulario Setting-->
                     <div id="settings" class="tab-pane">
                         <h4>Settings</h4>
-                        <form>
+                        {!! Form::model($user, ['method' => 'PATCH', 'route' => ['users.update', $user->slug]]) !!}
                             <div class="form-group">
-                                <label>Nombre </label>
-                                <input type="text" class="form-control"  value="{{$user->name}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Email </label>
-                                <input type="email" class="form-control"  value="{{$user->email}}">
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control"  placeholder="Password">
-                            </div>
-                            <input type="submit" class="btn btn-default" name="update" value="Modificar"/>
 
-                        </form>
+
+                                {!! Form::label('password', 'Contraseña:') !!}
+                                {!! Form::text('password') !!}
+                            </div>
+                            {!! Form::submit("Modificar") !!}
+
+
+                        {!! Form::close() !!}
                         <!-- -->
 
 

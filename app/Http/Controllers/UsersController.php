@@ -84,9 +84,12 @@ class UsersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(User $user)
 	{
-		//
+        $input = array_except(Input::all(), '_method');
+        $user->update($input);
+
+        return Redirect::route('users.show', $user->slug)->with('message', 'User updated.');
 	}
 
 	/**
