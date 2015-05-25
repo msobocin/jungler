@@ -45,6 +45,18 @@
 
                         </a>
 
+                        <p>Likes: {{ $post->likeCount }}</p>
+
+                        @if (!Auth::guest())
+
+                            {!! Form::open(array('class' => 'form-inline', 'method' => 'POST', 'route' => array('posts.like', $post->slug))) !!}
+
+                                {!! Form::submit("Like", ['class'=>'btn btn-success']) !!}
+
+                            {!! Form::close() !!}
+
+                        @endif
+
                         <div class="collapse" id="{{$post->slug}}">
                             <div class="well">
                                 @if ($post->comments->count()>0)

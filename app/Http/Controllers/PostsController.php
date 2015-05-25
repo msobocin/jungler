@@ -109,4 +109,17 @@ class PostsController extends Controller {
 		//
 	}
 
+    public function like(Post $post)
+    {
+        $userID = Auth::user()->id;
+
+        if (!$post->liked($userID)) {
+            $post->like($userID);
+        }else {
+            $post->unlike($userID);
+        }
+
+        return Redirect::route('posts.index')->with('message', 'Posts liked');
+    }
+
 }

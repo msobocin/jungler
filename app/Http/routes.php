@@ -38,7 +38,10 @@ Route::bind('tags', function($value, $route) {
     return Conner\Tagging\Tag::whereSlug($value)->first();
 });
 
-Route::resource('posts', 'PostsController');
+Route::post('posts/{posts}/like', ['uses' => 'PostsController@like', 'as' => 'posts.like']); //likes
+
+Route::resource('posts', 'PostsController',
+    ['names' => ['like' => 'posts.like']]);
 Route::resource('posts.comments', 'CommentsController');
 Route::resource('/', 'PostsController');
 Route::resource('users', 'UsersController');
