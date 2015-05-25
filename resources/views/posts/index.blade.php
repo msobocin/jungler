@@ -26,7 +26,7 @@
 
             <div class="media comentario">
 
-                @foreach( $posts as $post )
+                @foreach( $posts->reverse() as $post )
                 <a class="pull-left" href=''>
                     <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45">
                 </a>
@@ -49,6 +49,20 @@
                         <a class="" data-toggle="collapse" href="#{{$post->slug}}" aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Ver comentarios"><div class="glyphicon glyphicon-collapse-down">   </div> 
                         </a>   
                         @endif
+
+                        <p>Likes: {{ $post->likeCount }}</p>
+
+                        @if (!Auth::guest())
+
+                            {!! Form::open(array('class' => 'form-inline', 'method' => 'POST', 'route' => array('posts.like', $post->slug))) !!}
+
+                                {!! Form::submit("Like", ['class'=>'btn btn-success']) !!}
+
+                            {!! Form::close() !!}
+
+                        @endif
+
+
                         <div class="collapse" id="{{$post->slug}}">
                             <div class="well">
                                 @if ($post->comments->count()>0)
