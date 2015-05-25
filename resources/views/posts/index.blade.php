@@ -26,7 +26,7 @@
 
             <div class="media comentario">
 
-                @foreach( $posts as $post )
+                @foreach( $posts->reverse() as $post )
                 <a class="pull-left" href=''>
                     <img class="img-circle" src="{{ asset('img/dede.jpg') }}" width="45">
                 </a>
