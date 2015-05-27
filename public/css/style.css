@@ -306,3 +306,16 @@ header {
     background-color: transparent;
 
 }
+.texto-p{
+    text-align : justify;
+}
+.count-coment{
+    background-color: green;
+}
+.f{
+    position: absolute;
+}
+.wel{
+  padding: 0px;
+margin-bottom: 0px;  
+}
