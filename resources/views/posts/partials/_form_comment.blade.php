@@ -1,6 +1,6 @@
-<div class="well well-sm">
+<div class="well wel">
 <div class="form-group">
-    {!! Form::label('body', 'Content:') !!}
+    {!! Form::label('body', 'Comentario:') !!}
     {!! Form::textarea('body',null, array('class'=>'form-control','size'=>'20x3') ) !!}
 </div>
 <!--<div class="form-group">

@@ -12,7 +12,7 @@
                 <div class="panel-body">
 
                     <!--<h4 class="media-heading"> {{ $post->user->name }} </h4>-->
-                    <p>{{ $post->content }}</p>
+                    <p class="texto-p">{{ $post->content }}</p>
                 </div>
             </div>
 
@@ -52,7 +52,7 @@
 
             <!-- Blog Categories Well -->
             <div class="well">
-                <h4>Tags más populares</h4>
+                <h4>Tags m&aacute;s populares</h4>
                 <div class="row">
                     <div class="col-xs-6 ">
                         <ul class="list-unstyled">

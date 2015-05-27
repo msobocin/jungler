@@ -1,7 +1,7 @@
 
 body
 {
-    background-color: #B7DEB3;
+    background-color: #EFFAF1;
     background-size: cover;
     padding: 0;
     margin: 0;
@@ -248,7 +248,7 @@ form.login a:hover
 .user-body .tab-content h4 {width: 100%; margin: 10px 0; color: #333;}
 
 .comentario{
-    background-color: #B79879;
+    background-color:white;
     border-radius: 5px;
     border: 1px solid #000000;
     padding: 20px;
@@ -293,4 +293,29 @@ header {
 }
 .data{
     margin-right: 15px;
+}
+.back{
+    background-color: green;
+
+}
+.ahref{
+    color: white !important;
+}
+
+.afocus .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus{
+    background-color: transparent;
+
+}
+.texto-p{
+    text-align : justify;
+}
+.count-coment{
+    background-color: green;
+}
+.f{
+    position: absolute;
+}
+.wel{
+  padding: 0px;
+margin-bottom: 0px;  
 }
