@@ -91,13 +91,13 @@
 
 
         @foreach( $posts->reverse() as $post )
-        <!--        <li><a href="{{ route('posts.show', $post->slug) }}">{{ $post->content }} </a> {{ $post -> created_at }} user: {{ $post->user->name }}</li>
+               <li><a href="{{ route('posts.show', $post->slug) }}">{{ $post->content }} </a> {{ $post -> created_at }} user: {{ $post->user->name }}</li>
                 @if($post->comments)
                 <ul>
                     @foreach( $post->comments->where("user_id",$user->id) as $comment )
                     <li><a href="{{ route('posts.show', $post->slug) }}">{{ $comment->body }} </a> {{ $comment -> created_at }} user: {{ $comment->user->name }}</li>
                     @endforeach
-                </ul>-->
+                </ul>
         @endif
         @endforeach
         {{--<p>{{ var_dump($user )}}</p>--}}

@@ -319,3 +319,12 @@ header {
   padding: 0px;
 margin-bottom: 0px;  
 }
+
+.tag-list {
+    width: 100% !important;
+}
+
+.tag-list li {
+    display: inline-block;
+
+}

@@ -176,25 +176,14 @@
             <div class="well">
                 <h4>Tags m&aacute;s populares</h4>
                 <div class="row">
-                    <div class="col-xs-6 ">
-                        <ul class="list-unstyled">
-                            <li><a href="#">#PASAMELABOTELLA</a>
-                            </li>
-                            <li><a href="#">#OMEGAELFUELTE</a>
-                            </li>
-                            <li><a href="#">#VAINALOCA</a>
-                            </li>
-                            <li><a href="#">#LOCO</a>
-                            </li>
+                    <div class="col-xs-12 ">
+                        <ul class="list-unstyled tag-list">
+                            @foreach($tags as $tag)
 
-                            <li><a href="#">#Guapisimo</a>
-                            </li>
-                            <li><a href="#">#hashtag</a>
-                            </li>
-                            <li><a href="#">#Havannaclub7</a>
-                            </li>
-                            <li><a href="#">#WOW</a>
-                            </li>
+                                <li>{!! link_to_route('tags.show', '#'.$tag->name.'('.$tag->count.')', [$tag->slug]) !!}</li>
+
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
