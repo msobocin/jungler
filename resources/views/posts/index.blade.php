@@ -13,7 +13,7 @@
 
             {!! Form::model(new App\Post, ['route' => ['posts.store'], 'class'=>'']) !!}
 
-            @include('posts/partials/_form', ['submit_text' => 'Create Post'])
+            @include('posts/partials/_form', ['submit_text' => 'Crear'])
             {!! Form::close() !!}
 
             @endif
@@ -70,18 +70,6 @@
                     </div>
 
                     <div class="responder">
-                        
-                        <a  href="#{{$post->id}}" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Responder"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp; &nbsp;&nbsp; &nbsp;
-                        <a href="{{ route('posts.show', $post->slug) }}" data-toggle="tooltip" data-placement="bottom" title="Ver post"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a>
-                        &nbsp; &nbsp;&nbsp; &nbsp;
-
-
-                        @if ($post->comments->count()>0)
-                        <a class="" data-toggle="collapse" href="#{{$post->slug}}" aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Ver comentarios"><div class="glyphicon glyphicon-chevron-down">   </div> 
-                        </a>  
-                        <span class="badge count-coment hidden-xs">{{$post->comments->count()}}</span>
-
-                        @endif
 
                         @if (!Auth::guest())
 
@@ -92,20 +80,19 @@
                             <label>{{ $post->likeCount }}</label>
                         </div>
                         {!! Form::close() !!}
+                        <hr/>
+                        @endif
+                        @if (!Auth::guest())<a  href="#{{$post->id}}" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Responder"><span class="glyphicon glyphicon-pencil"></span></a> @endif &nbsp; &nbsp;&nbsp; &nbsp;
+                        <a href="{{ route('posts.show', $post->slug) }}" data-toggle="tooltip" data-placement="bottom" title="Ver post"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a>
+                        &nbsp; &nbsp;&nbsp; &nbsp;
+
+
+                        @if ($post->comments->count()>0)
+                        <a class="" data-toggle="collapse" href="#{{$post->slug}}" aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Ver comentarios"><div class="glyphicon glyphicon-chevron-down">   </div> 
+                        </a>  
+                        <span class="badge count-coment hidden-xs">{{$post->comments->count()}}</span>
 
                         @endif
-
-    <!--                            <p>Likes: {{ $post->likeCount }}</p>
-
-                                @if (!Auth::guest())
-
-                                {!! Form::open(array('class' => 'form-inline', 'method' => 'POST', 'route' => array('posts.like', $post->slug))) !!}
-
-                                {!! Form::submit("Like", ['class'=>'btn btn-success']) !!}
-
-                                {!! Form::close() !!}
-
-                                @endif-->
 
                         <div class="collapse" id="{{$post->id}}">
                             <div class="well wel">
@@ -180,7 +167,7 @@
                         <ul class="list-unstyled tag-list">
                             @foreach($tags as $tag)
 
-                                <li>{!! link_to_route('tags.show', '#'.$tag->name.'('.$tag->count.')', [$tag->slug]) !!}</li>
+                            <li>{!! link_to_route('tags.show', '#'.$tag->name.'('.$tag->count.')', [$tag->slug]) !!}</li>
 
                             @endforeach
 

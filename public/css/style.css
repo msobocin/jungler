@@ -328,3 +328,9 @@ margin-bottom: 0px;
     display: inline-block;
 
 }
+.coment{
+       background-color:white;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    padding: 20px;
+}

@@ -1,7 +1,7 @@
 
 <div class="form-group">
-    <!--{!! Form::label('content', 'Post:') !!}-->
-    {!! Form::textarea('content',null, array('class'=>'form-control','size'=>'20x3', 'placeholder'=>'A que vine al mundo...') ) !!}
+    {!! Form::label('content', 'Post:') !!}
+    {!! Form::textarea('content','#'.$tag->slug, array('class'=>'form-control','size'=>'20x3') ) !!}
 </div>
 <!--<div class="form-group">
     {!! Form::label('slug', 'Slug:') !!}
