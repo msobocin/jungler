@@ -25,8 +25,9 @@ class PostsController extends Controller {
 	 */
 	public function index()
 	{
+        $tags = Tag::orderBy('count', 'desc')->take(25)->get();
 		$posts = Post::all();
-		return view('posts.index', compact('posts'));
+		return view('posts.index', compact('posts','tags'));
 	}
 
 	/**
