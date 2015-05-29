@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+
+use Carbon\Carbon;
 use Conner\Likeable\LikeCounter;
 use Conner\Tagging\Tag;
 
@@ -23,7 +25,8 @@ class HottiesController extends Controller {
 	{
         $tags = Tag::orderBy('count', 'desc')->take(25)->get();
 
-        $posts = Post::where('created_at','>','')->whereLikedAll()->with('likeCounter')->get();
+
+        $posts = Post::where('created_at', '>=', Carbon::now()->subMinutes(720))->whereLikedAll()->with('likeCounter')->get();
         $posts = $posts->sortBy('likeCounter.count');
 
 //        foreach($likes as $like){

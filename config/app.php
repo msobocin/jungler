@@ -215,6 +215,7 @@ return [
 		'Form'=> 'Illuminate\Html\FormFacade', 
 		'HTML'=> 'Illuminate\Html\HtmlFacade',
         'Activity' => 'Spatie\Activitylog\ActivitylogFacade',
+        'Carbon'   => 'Nesbot\Carbon\Carbon',
 
 	],
 
