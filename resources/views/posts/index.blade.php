@@ -99,7 +99,7 @@
                                 @if (!Auth::guest())
 
                                 {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'' ,'id'=>"commet-$post->id"]) !!}
-                                @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
+                                @include('posts/partials/_form_comment', ['submit_text' => 'Comentar'])
                                 {!! Form::close() !!}
 
                                 @endif
