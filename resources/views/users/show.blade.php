@@ -157,10 +157,11 @@
                                 <tr><td><span class=" glyphicon glyphicon-time" aria-hidden="true"></span></td><td>{{ $user->created_at }}</td></tr>
                                 <tr><td><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></td><td>{{$user->posts()->count()}} </td></tr>
                             </table>
-                           
-                            @if (Auth::user()->id == $user->id)    
-                            <p><button type="button" class="btn btn-success" data-toggle="modal" data-target="#{{$user->id}} " data-whatever="@mdo">Editar</button></p>
-                            @endif                           
+                            @if(!Auth::guest())
+                                @if (Auth::user()->id == $user->id)    
+                                    <p><button type="button" class="btn btn-success" data-toggle="modal" data-target="#{{$user->id}} " data-whatever="@mdo">Editar</button></p>
+                                @endif                           
+                            @endif
                         </div>
                     </div>
                 </div>
