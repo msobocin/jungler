@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use Carbon\Carbon;
 use Lanz\Commentable\Commentable;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
@@ -19,9 +20,15 @@ class Post extends Model implements SluggableInterface {
     protected $guarded = [];
 
     protected $sluggable = array(
-        'build_from' => 'content',
+        'build_from' => 'SlugName',
+        'max_length'      => 125,
         'save_to'    => 'slug',
     );
+
+    public function getSlugNameAttribute()
+    {
+        return Carbon::now() . '-' . $this->content;
+    }
 
 	public function user()
     {
