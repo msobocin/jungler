@@ -44,9 +44,6 @@
 
                             <input type="password"  name="password_confirmation" placeholder="Confirmar Contrase&ntilde;a">
 
-
-
-
                             <input type="submit" class="btn btn-warning "  value="Registrar"/>
 
                         </form>
