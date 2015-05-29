@@ -47,3 +47,4 @@ Route::resource('/', 'PostsController');
 Route::resource('users', 'UsersController');
 Route::resource('comments', 'CommentsController');
 Route::resource('tags', 'TagsController');
+Route::resource('hot','HottiesController');

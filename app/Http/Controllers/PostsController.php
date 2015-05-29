@@ -74,7 +74,8 @@ class PostsController extends Controller {
 	 */
 	public function show(Post $post)
 	{
-		return view('posts.show', compact('post'));
+        $tags = Tag::orderBy('count', 'desc')->take(25)->get();
+		return view('posts.show', compact('post','tags'));
 	}
 
 	/**
