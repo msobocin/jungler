@@ -13,7 +13,7 @@
 
             {!! Form::model(new App\Post, ['route' => ['posts.store'], 'class'=>'']) !!}
 
-            @include('posts/partials/_form', ['submit_text' => 'Create Post'])
+            @include('posts/partials/_form', ['submit_text' => 'Crear'])
             {!! Form::close() !!}
 
             @endif
@@ -70,8 +70,19 @@
                     </div>
 
                     <div class="responder">
-                        
-                        <a  href="#{{$post->id}}" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Responder"><span class="glyphicon glyphicon-pencil"></span></a> &nbsp; &nbsp;&nbsp; &nbsp;
+
+                        @if (!Auth::guest())
+
+                        {!! Form::open(array('class' => 'form-inline', 'method' => 'POST', 'route' => array('posts.like', $post->slug))) !!}
+                        <div class="form-group" >
+
+                            {!! Form::submit("Like", ['class'=>'btn btn-link', 'src'=>'img/dede.jpg)']) !!}
+                            <label>{{ $post->likeCount }}</label>
+                        </div>
+                        {!! Form::close() !!}
+                        <hr/>
+                        @endif
+                        @if (!Auth::guest())<a  href="#{{$post->id}}" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseExample" data-placement="bottom" title="Responder"><span class="glyphicon glyphicon-pencil"></span></a> @endif &nbsp; &nbsp;&nbsp; &nbsp;
                         <a href="{{ route('posts.show', $post->slug) }}" data-toggle="tooltip" data-placement="bottom" title="Ver post"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a>
                         &nbsp; &nbsp;&nbsp; &nbsp;
 
@@ -83,36 +94,12 @@
 
                         @endif
 
-                        @if (!Auth::guest())
-
-                        {!! Form::open(array('class' => 'form-inline', 'method' => 'POST', 'route' => array('posts.like', $post->slug))) !!}
-                        <div class="form-group" >
-
-                            {!! Form::submit("Like", ['class'=>'btn btn-link', 'src'=>'img/dede.jpg)']) !!}
-                            <label>{{ $post->likeCount }}</label>
-                        </div>
-                        {!! Form::close() !!}
-
-                        @endif
-
-    <!--                            <p>Likes: {{ $post->likeCount }}</p>
-
-                                @if (!Auth::guest())
-
-                                {!! Form::open(array('class' => 'form-inline', 'method' => 'POST', 'route' => array('posts.like', $post->slug))) !!}
-
-                                {!! Form::submit("Like", ['class'=>'btn btn-success']) !!}
-
-                                {!! Form::close() !!}
-
-                                @endif-->
-
                         <div class="collapse" id="{{$post->id}}">
                             <div class="well wel">
                                 @if (!Auth::guest())
 
                                 {!! Form::model(new Lanz\Commentable\Comment, ['route' => ['posts.comments.store', $post->slug], 'class'=>'' ,'id'=>"commet-$post->id"]) !!}
-                                @include('posts/partials/_form_comment', ['submit_text' => 'Create Comment'])
+                                @include('posts/partials/_form_comment', ['submit_text' => 'Comentar'])
                                 {!! Form::close() !!}
 
                                 @endif
@@ -180,7 +167,7 @@
                         <ul class="list-unstyled tag-list">
                             @foreach($tags as $tag)
 
-                                <li>{!! link_to_route('tags.show', '#'.$tag->name.'('.$tag->count.')', [$tag->slug]) !!}</li>
+                            <li>{!! link_to_route('tags.show', '#'.$tag->name.'('.$tag->count.')', [$tag->slug]) !!}</li>
 
                             @endforeach
 

@@ -48,8 +48,9 @@ class TagsController extends Controller {
 	 */
 	public function show(Tag $tag)
 	{
-        $posts = Post::withAllTags($tag->slug)->get();
-        return view('tags.show', compact('posts'));
+            $tags = Tag::orderBy('count', 'desc')->take(25)->get();
+            $posts = Post::withAllTags($tag->slug)->get();
+            return view('tags.show', compact('posts','tag','tags'));
 	}
 
 	/**
