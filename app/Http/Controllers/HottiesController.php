@@ -25,8 +25,11 @@ class HottiesController extends Controller {
 	{
         $tags = Tag::orderBy('count', 'desc')->take(25)->get();
 
+        $userId = 0;
 
-        $posts = Post::where('created_at', '>=', Carbon::now()->subMinutes(720))->whereLikedAll()->with('likeCounter')->get();
+        $posts = Post::where('created_at', '>=', Carbon::now()->subMinutes(720))->->whereHas('likes', function($q) use($userId) {
+            $q->where('user_id', 'like', '%');
+        })->with('likeCounter')->get();
         $posts = $posts->sortBy('likeCounter.count');
 
 //        foreach($likes as $like){
