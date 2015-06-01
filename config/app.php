@@ -149,7 +149,7 @@ return [
 		/*
 		* Custom Services Providers...
 		*/
-		'Laracasts\Generators\GeneratorsServiceProvider',
+
 		'Frozennode\Administrator\AdministratorServiceProvider',
 		'Jenssegers\Mongodb\MongodbServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
