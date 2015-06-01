@@ -24,6 +24,7 @@ trait LikeableTrait {
     {
         return $query->whereHas('likes', function($q) use($userId) {
             $q->where('user_id', 'like', '%');
+            
         });
     }
 	
