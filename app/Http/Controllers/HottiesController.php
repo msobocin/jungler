@@ -100,11 +100,4 @@ class HottiesController extends Controller {
 		//
 	}
 
-    public function scopeWhereLikedAll($query, $userId=null)
-    {
-        return $query->whereHas('likes', function($q) use($userId) {
-            $q->where('user_id', 'like', '%');
-        });
-    }
-
 }
