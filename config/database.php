@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'default' => 'pgsql',
+	'default' => 'mysql',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
 			'driver'    => 'mysql',
 			'host'      => env('DB_HOST', 'localhost'),
 			'database'  => env('DB_DATABASE', 'jungler'),
-			'username'  => env('DB_USERNAME', 'root'),
-			'password'  => env('DB_PASSWORD', 'secret'),
+			'username'  => env('DB_USERNAME', 'adminuzvws7t'),
+			'password'  => env('DB_PASSWORD', 'UtnCWecm1cDw'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
